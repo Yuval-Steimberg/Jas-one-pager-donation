@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Adopt a Reservist — Just a Second</title>
+<link rel="stylesheet" href="assets/fonts.css" />
+<style>
+  @page { size: A4; margin: 0; }
+
+  :root {
+    --green: #333D36;
+    --green-mid: #626B65;
+    --sage: #B5C9AD;
+    --sage-tint: #EAF0E6;
+    --orange: #E88225;
+    --cream: #FFFCF5;
+    --font-title: 'Rubik', sans-serif;
+    --font-body: 'Assistant', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body { background: #888; }
+  body {
+    font-family: var(--font-body);
+    color: var(--green);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    width: 210mm;
+    height: 297mm;
+    background: var(--cream);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+  }
+
+  .pad { padding-left: 14mm; padding-right: 14mm; }
+
+  /* ── Masthead ───────────────────────────────────────────── */
+  .masthead { padding-top: 11mm; }
+  .brand {
+    font-family: var(--font-title);
+    font-weight: 800;
+    font-size: 11pt;
+    letter-spacing: 0.06em;
+    color: var(--green);
+  }
+  .brand-rule {
+    width: 17mm;
+    height: 1.1mm;
+    background: var(--orange);
+    margin-top: 2.6mm;
+  }
+
+  /* ── Hero ───────────────────────────────────────────────── */
+  .hero {
+    display: grid;
+    grid-template-columns: 103mm 1fr;
+    gap: 7mm;
+    margin-top: 5mm;
+    align-items: start;
+  }
+  .hero-copy { padding-left: 14mm; }
+  h1 {
+    font-family: var(--font-title);
+    font-weight: 900;
+    font-size: 37pt;
+    line-height: 0.94;
+    letter-spacing: -0.02em;
+    color: var(--green);
+  }
+  .hero-sub {
+    font-family: var(--font-title);
+    font-weight: 700;
+    font-size: 13pt;
+    line-height: 1.25;
+    color: var(--orange);
+    margin-top: 4mm;
+  }
+  .hero-lead {
+    font-size: 9.6pt;
+    line-height: 1.62;
+    color: var(--green-mid);
+    margin-top: 5mm;
+  }
+  .hero-photo {
+    height: 74mm;
+    overflow: hidden;
+    position: relative;
+  }
+  .hero-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 32%;
+  }
+
+  /* ── Pull statement ─────────────────────────────────────── */
+  .statement {
+    font-family: var(--font-title);
+    font-weight: 800;
+    font-size: 14.5pt;
+    line-height: 1.3;
+    color: var(--green);
+    margin-top: 5mm;
+    padding-top: 4mm;
+    border-top: 0.4mm solid var(--sage);
+  }
+  .statement span { color: var(--orange); }
+
+  /* ── Body ───────────────────────────────────────────────── */
+  .body-cols {
+    margin-top: 4mm;
+    column-count: 2;
+    column-gap: 8mm;
+    font-size: 9.4pt;
+    line-height: 1.66;
+    color: var(--green-mid);
+    text-align: left;
+  }
+  .body-cols p { break-inside: avoid; }
+  .body-cols p + p { margin-top: 3mm; }
+  .body-cols strong { color: var(--green); font-weight: 700; }
+  .body-cols em { color: var(--green); font-weight: 700; font-style: italic; }
+
+  /* ── 100% band ──────────────────────────────────────────── */
+  .pledge {
+    margin-top: 5mm;
+    background: var(--sage-tint);
+    border-left: 1.6mm solid var(--orange);
+    padding: 4mm 7mm;
+    display: flex;
+    align-items: center;
+    gap: 6mm;
+  }
+  .pledge-num {
+    font-family: var(--font-title);
+    font-weight: 900;
+    font-size: 36pt;
+    line-height: 0.85;
+    color: var(--green);
+    letter-spacing: -0.03em;
+    flex-shrink: 0;
+  }
+  .pledge-text {
+    font-family: var(--font-title);
+    font-weight: 700;
+    font-size: 12pt;
+    line-height: 1.28;
+    color: var(--green);
+  }
+  .pledge-text small {
+    display: block;
+    font-family: var(--font-body);
+    font-weight: 400;
+    font-size: 8.6pt;
+    line-height: 1.55;
+    color: var(--green-mid);
+    margin-top: 1.6mm;
+  }
+
+  /* ── Photo strip ────────────────────────────────────────── */
+  .strip {
+    margin-top: 5mm;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3mm;
+  }
+  .strip figure { height: 27.5mm; overflow: hidden; position: relative; }
+  .strip img { width: 100%; height: 100%; object-fit: cover; }
+  .strip .bench img { object-position: 50% 68%; }
+  .strip .shop img { object-position: 50% 30%; }
+  .strip-cap {
+    grid-column: 1 / -1;
+    font-size: 8.4pt;
+    line-height: 1.5;
+    color: var(--green-mid);
+    margin-top: 1mm;
+  }
+  .strip-cap strong { color: var(--green); font-weight: 700; }
+
+  /* ── Donate footer ──────────────────────────────────────── */
+  .donate {
+    margin-top: auto;
+    background: var(--green);
+    color: var(--cream);
+    padding: 6mm 14mm 5mm;
+    display: grid;
+    grid-template-columns: 30mm 1fr;
+    gap: 7mm;
+    align-items: center;
+  }
+  .qr {
+    width: 30mm;
+    height: 30mm;
+    background: var(--cream);
+    padding: 2mm;
+  }
+  .qr img { width: 100%; height: 100%; display: block; }
+  .donate-label {
+    font-family: var(--font-title);
+    font-weight: 700;
+    font-size: 8.6pt;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--orange);
+  }
+  .donate-head {
+    font-family: var(--font-title);
+    font-weight: 900;
+    font-size: 17.5pt;
+    line-height: 1.12;
+    color: var(--cream);
+    margin-top: 2mm;
+  }
+  .donate-url {
+    font-family: 'DejaVu Sans Mono', 'Liberation Mono', monospace;
+    font-size: 7.8pt;
+    line-height: 1.45;
+    letter-spacing: 0.01em;
+    color: rgba(255,250,240,0.78);
+    margin-top: 2.4mm;
+    word-break: break-all;
+    text-decoration: none;
+    display: block;
+  }
+  .donate-tag {
+    font-family: var(--font-title);
+    font-weight: 700;
+    font-style: italic;
+    font-size: 10.5pt;
+    color: var(--orange);
+    margin-top: 2.6mm;
+  }
+  .footnote {
+    grid-column: 1 / -1;
+    border-top: 0.3mm solid rgba(181,201,173,0.28);
+    padding-top: 3mm;
+    margin-top: 0.5mm;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 6mm;
+  }
+  .footnote p {
+    font-size: 7.4pt;
+    line-height: 1.5;
+    color: rgba(255,250,240,0.55);
+    max-width: 118mm;
+  }
+  .footnote .site {
+    font-family: var(--font-title);
+    font-weight: 700;
+    font-size: 9pt;
+    color: var(--cream);
+    white-space: nowrap;
+    text-decoration: none;
+  }
+</style>
+</head>
+<body>
+  <div class="page">
+
+    <header class="masthead pad">
+      <div class="brand">Just a Second</div>
+      <div class="brand-rule"></div>
+    </header>
+
+    <section class="hero">
+      <div class="hero-copy">
+        <h1>Adopt a<br />Reservist</h1>
+        <p class="hero-sub">Employment, creativity,<br />and a place to return to</p>
+        <p class="hero-lead">
+          For nearly three years, reserve duty has shaped daily life for young Israelis — studies interrupted, jobs hard to hold on to, and every plan made with an asterisk, because the next call-up could come at any moment.
+        </p>
+      </div>
+      <div class="hero-photo">
+        <img src="assets/reservists-workshop.jpg" alt="Two reservists in the Just a Second workshop" />
+      </div>
+    </section>
+
+    <div class="pad">
+      <p class="statement">
+        At Just a Second, we have made employing reservists <span>a core part of what we do.</span>
+      </p>
+
+      <div class="body-cols">
+        <p>
+          Just a Second is an environmental and social enterprise that rescues furniture and materials from apartments about to be demolished, giving them new life instead of letting them go to waste. Reservists between rounds of service do the deconstruction and upcycling work — flexible, hands-on and meaningful. We call it <em>healing by doing</em>.
+        </p>
+        <p>
+          Every item we restore is sold in our gallery-shop, with profits going toward mental-health support for combat soldiers and veterans.
+        </p>
+        <p>
+          More and more reservists want to join us. <strong>Our only constraint is funding.</strong> That is why we created "Adopt a Reservist" — you can fund one workday, or several.
+        </p>
+      </div>
+
+      <div class="pledge">
+        <div class="pledge-num">100%</div>
+        <div class="pledge-text">
+          of every donation goes directly toward employing reservists.
+          <small>The more we raise, the more workdays we can offer — and the more reservists we can welcome with a resounding "yes".</small>
+        </div>
+      </div>
+
+      <div class="strip">
+        <figure class="bench"><img src="assets/gallery-bench.jpg" alt="An upcycled bench in the gallery-shop" /></figure>
+        <figure class="shop"><img src="assets/gallery-shop.jpg" alt="Restored furniture on display in the gallery-shop" /></figure>
+        <p class="strip-cap"><strong>Rescued, restored, resold.</strong> Every piece funds the next workday.</p>
+      </div>
+    </div>
+
+    <footer class="donate">
+      <a class="qr" href="https://pay.grow.link/MTI4NTk~ebc231302183bc6fb9c76929dc7919dc-Mzk5NTUxMA">
+        <img src="assets/donate-qr.svg" alt="QR code linking to the donation page" />
+      </a>
+      <div>
+        <div class="donate-label">To donate</div>
+        <div class="donate-head">Scan the code, or give online</div>
+        <a class="donate-url" href="https://pay.grow.link/MTI4NTk~ebc231302183bc6fb9c76929dc7919dc-Mzk5NTUxMA">pay.grow.link/MTI4NTk~ebc231302183bc6fb9c76929dc7919dc-Mzk5NTUxMA</a>
+        <p class="donate-tag">Give a day of work. Give someone a place to return to.</p>
+      </div>
+      <div class="footnote">
+        <p>
+          Donations are recognized for tax purposes in Israel, entitling individuals to a 35% tax credit under Section 46. With our heartfelt thanks — the Just a Second team.
+        </p>
+        <a class="site" href="https://www.justasecond.co.il/">justasecond.co.il</a>
+      </div>
+    </footer>
+
+  </div>
+</body>
+</html>
