@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Adopt a Reservist — Just a Second</title>
+<link rel="stylesheet" href="assets/fonts-editorial.css" />
+<style>
+  @page { size: A4; margin: 0; }
+
+  :root {
+    --forest: #234432;
+    --forest-soft: #3E5A49;
+    --ink: #2F3A33;
+    --body: #46524A;
+    --terra: #C06B47;
+    --sage-band: #DFE8D6;
+    --paper: #F8F5EC;
+    --serif: 'Playfair Display', Georgia, serif;
+    --sans: 'Lato', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: #8a8a8a; }
+  body { font-family: var(--sans); color: var(--body); -webkit-font-smoothing: antialiased; }
+
+  .page {
+    width: 210mm;
+    height: 297mm;
+    background: var(--paper);
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+  }
+
+  /* ── Organic hero, bleeding off the top-right ───────────── */
+  .hero-art {
+    position: absolute;
+    top: 0; right: 0;
+    width: 118mm; height: 108mm;
+    z-index: 0;
+  }
+  .hero-art svg { display: block; width: 100%; height: 100%; }
+
+  /* ── Content column ─────────────────────────────────────── */
+  .sheet {
+    position: relative;
+    z-index: 1;
+    padding: 14mm 14mm 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .brand {
+    font-family: var(--sans);
+    font-weight: 900;
+    font-size: 15pt;
+    letter-spacing: -0.005em;
+    color: var(--forest);
+  }
+  .rule-terra {
+    width: 16mm; height: 1.1mm;
+    background: var(--terra);
+    margin-top: 2.4mm;
+  }
+
+  h1 {
+    font-family: var(--serif);
+    font-weight: 900;
+    font-size: 52pt;
+    line-height: 0.92;
+    letter-spacing: -0.015em;
+    color: var(--forest);
+    margin-top: 6mm;
+  }
+  .deck {
+    font-family: var(--sans);
+    font-weight: 400;
+    font-size: 14.5pt;
+    line-height: 1.28;
+    color: var(--forest);
+    margin-top: 3mm;
+    max-width: 84mm;
+  }
+
+  /* first paragraph runs narrow, clearing the artwork */
+  .lead {
+    font-size: 10pt;
+    line-height: 1.62;
+    color: var(--body);
+    margin-top: 5mm;
+    max-width: 82mm;
+  }
+
+  .callout {
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 11pt;
+    line-height: 1.45;
+    color: var(--ink);
+    margin-top: 5mm;
+    max-width: 96mm;
+  }
+
+  .prose { margin-top: 4mm; }
+  .prose p {
+    font-size: 10pt;
+    line-height: 1.62;
+    color: var(--body);
+  }
+  .prose p + p { margin-top: 3mm; }
+  .prose strong { color: var(--ink); font-weight: 700; }
+
+  .kicker {
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 11pt;
+    line-height: 1.45;
+    color: var(--ink);
+    margin-top: 4mm;
+  }
+  .kicker span { display: block; font-weight: 400; color: var(--body); }
+
+  /* ── Pledge band ────────────────────────────────────────── */
+  .pledge {
+    margin-top: 5mm;
+    background: var(--sage-band);
+    border-radius: 4mm;
+    padding: 5mm 7mm;
+    display: flex;
+    align-items: center;
+    gap: 6mm;
+  }
+  .pledge-leaf { width: 11mm; flex-shrink: 0; color: var(--forest); }
+  .pledge-leaf svg { width: 100%; display: block; fill: currentColor; }
+  .pledge-num {
+    font-family: var(--serif);
+    font-weight: 900;
+    font-size: 41pt;
+    line-height: 0.8;
+    color: var(--forest);
+    letter-spacing: -0.02em;
+    flex-shrink: 0;
+  }
+  .pledge-text {
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 12.6pt;
+    line-height: 1.24;
+    color: var(--forest);
+  }
+
+  .after-band {
+    font-size: 10pt;
+    line-height: 1.62;
+    color: var(--body);
+    margin-top: 4mm;
+  }
+
+  /* ── Donate ─────────────────────────────────────────────── */
+  .give {
+    margin-top: 5mm;
+    display: grid;
+    grid-template-columns: 26mm 1fr;
+    gap: 6mm;
+    align-items: center;
+  }
+  .qr { width: 26mm; height: 26mm; }
+  .qr img { width: 100%; height: 100%; display: block; }
+  .give-label {
+    font-family: var(--sans);
+    font-weight: 900;
+    font-size: 8.4pt;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--terra);
+  }
+  .give-head {
+    font-family: var(--serif);
+    font-weight: 800;
+    font-size: 17pt;
+    line-height: 1.16;
+    color: var(--forest);
+    margin-top: 1.4mm;
+  }
+  .give-url {
+    display: block;
+    font-family: 'DejaVu Sans Mono', 'Liberation Mono', monospace;
+    font-size: 7.6pt;
+    line-height: 1.45;
+    color: var(--forest-soft);
+    margin-top: 1.8mm;
+    word-break: break-all;
+    text-decoration: none;
+  }
+
+  .tagline {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-style: italic;
+    font-size: 12pt;
+    line-height: 1.3;
+    color: var(--terra);
+    margin-top: 5mm;
+  }
+
+  /* ── Footer ─────────────────────────────────────────────── */
+  .foot { margin-top: auto; padding-bottom: 10mm; }
+  .foot .rule-terra { margin: 0 0 3.4mm; }
+  .fine {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 8mm;
+  }
+  .fine p {
+    font-size: 8pt;
+    line-height: 1.5;
+    color: var(--forest-soft);
+    max-width: 128mm;
+  }
+  .fine .site {
+    font-family: var(--sans);
+    font-weight: 900;
+    font-size: 9.4pt;
+    color: var(--forest);
+    white-space: nowrap;
+    text-decoration: none;
+  }
+</style>
+</head>
+<body>
+  <div class="page">
+
+    <div class="hero-art">
+      <svg viewBox="0 0 472 432" preserveAspectRatio="none">
+        <defs>
+          <clipPath id="blob">
+            <path d="M96,0 H472 V296
+                     C444,326 404,330 362,340 C312,352 272,378 222,384
+                     C162,391 112,360 86,310 C60,260 68,204 50,156
+                     C34,114 8,86 14,58 C20,28 58,2 96,0 Z" />
+          </clipPath>
+          <g id="sprig">
+            <path d="M30,92 C29,64 30,40 36,12" stroke="currentColor" stroke-width="3.4"
+                  fill="none" stroke-linecap="round" />
+            <path d="M30,71 C44,69 56,57 60,41 C44,43 32,55 30,71 Z" />
+            <path d="M32,49 C46,47 58,35 62,19 C46,21 34,33 32,49 Z" />
+            <path d="M30,61 C16,59 4,47 0,31 C16,33 28,45 30,61 Z" />
+            <path d="M34,31 C22,27 14,13 14,-3 C28,5 36,17 34,31 Z" />
+          </g>
+        </defs>
+        <!-- soft terracotta form, sitting behind and beside the photo -->
+        <path d="M262,372 C300,336 368,336 430,318 C466,308 472,330 466,356
+                 C458,392 424,416 380,420 C330,424 272,410 262,392
+                 C256,382 256,378 262,372 Z"
+              fill="#C97F5C" opacity="0.95" />
+        <image href="assets/reservists-workshop.jpg" x="0" y="-46" width="472" height="530"
+               preserveAspectRatio="xMidYMin slice" clip-path="url(#blob)" />
+        <use href="#sprig" transform="translate(392 330) scale(0.92)" fill="#234432" color="#234432" />
+      </svg>
+    </div>
+
+    <div class="sheet">
+
+      <div class="brand">Just a Second</div>
+      <div class="rule-terra"></div>
+
+      <h1>Adopt a<br />Reservist</h1>
+      <p class="deck">Employment, Creativity, and<br />a Place to Return To</p>
+
+      <p class="lead">
+        For nearly three years, reserve duty has shaped daily life for young Israelis — studies interrupted, jobs hard to hold onto, and every plan made with an asterisk, since the next call-up could come at any moment.
+      </p>
+
+      <p class="callout">
+        At Just a Second, we've made employing reservists a core part of what we do.
+      </p>
+
+      <div class="prose">
+        <p>
+          Just a Second is an environmental and social enterprise that rescues furniture and materials from apartments about to be demolished, giving them new life instead of letting them go to waste. Reservists between rounds of service do the deconstruction and upcycling work — flexible, hands-on, and meaningful. We call it <strong>healing by doing</strong>.
+        </p>
+        <p>
+          Every item we restore is sold in our gallery-shop, with profits going toward mental health support for combat soldiers and veterans.
+        </p>
+        <p>
+          More and more reservists want to join us. Our only constraint is funding.
+        </p>
+      </div>
+
+      <p class="kicker">
+        That's why we created "Adopt a Reservist."
+        <span>You can fund one workday—or several.</span>
+      </p>
+
+      <div class="pledge">
+        <div class="pledge-leaf">
+          <svg viewBox="-4 -6 70 104" fill="#234432">
+            <path d="M30,92 C29,64 30,40 36,12" stroke="#234432" stroke-width="3.4"
+                  fill="none" stroke-linecap="round" />
+            <path d="M30,71 C44,69 56,57 60,41 C44,43 32,55 30,71 Z" />
+            <path d="M32,49 C46,47 58,35 62,19 C46,21 34,33 32,49 Z" />
+            <path d="M30,61 C16,59 4,47 0,31 C16,33 28,45 30,61 Z" />
+            <path d="M34,31 C22,27 14,13 14,-3 C28,5 36,17 34,31 Z" />
+          </svg>
+        </div>
+        <div class="pledge-num">100%</div>
+        <div class="pledge-text">of every donation goes<br />directly toward employing<br />reservists.</div>
+      </div>
+
+      <p class="after-band">
+        The more we raise, the more workdays we can offer—and the more reservists we can welcome with a resounding "yes."
+      </p>
+
+      <div class="give">
+        <a class="qr" href="https://pay.grow.link/MTI4NTk~ebc231302183bc6fb9c76929dc7919dc-Mzk5NTUxMA">
+          <img src="assets/donate-qr.svg" alt="QR code linking to the donation page" />
+        </a>
+        <div>
+          <div class="give-label">To donate</div>
+          <div class="give-head">Scan the code, or give online</div>
+          <a class="give-url" href="https://pay.grow.link/MTI4NTk~ebc231302183bc6fb9c76929dc7919dc-Mzk5NTUxMA">pay.grow.link/MTI4NTk~ebc231302183bc6fb9c76929dc7919dc-Mzk5NTUxMA</a>
+        </div>
+      </div>
+
+      <p class="tagline">Give a day of work. Give someone a place to return to.</p>
+
+      <div class="foot">
+        <div class="rule-terra"></div>
+        <div class="fine">
+          <p>
+            Donations are recognized for tax purposes in Israel, entitling individuals to a 35% tax credit under Section 46. With our heartfelt thanks — the Just a Second team.
+          </p>
+          <a class="site" href="https://www.justasecond.co.il/">justasecond.co.il</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>
