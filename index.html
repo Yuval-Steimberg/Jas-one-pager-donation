@@ -792,6 +792,27 @@
     }
     .adopt-ask-note strong { color: var(--orange); font-weight: 700; }
     .adopt-btn { justify-content: center; margin-top: 4px; }
+    .adopt-dl {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      font-family: var(--font-body);
+      font-size: 0.86rem;
+      font-weight: 700;
+      color: var(--sage);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(181,201,173,0.35);
+      padding-bottom: 2px;
+      align-self: center;
+      transition: color 0.3s, border-color 0.3s;
+    }
+    .adopt-dl:hover { color: var(--cream); border-bottom-color: var(--cream); }
+    .adopt-dl svg {
+      width: 14px; height: 14px; flex-shrink: 0;
+      fill: none; stroke: currentColor; stroke-width: 2;
+      stroke-linecap: round; stroke-linejoin: round;
+    }
     .adopt-tax {
       font-family: var(--font-body);
       font-size: 0.8rem;
@@ -1459,6 +1480,10 @@
           <a href="https://pay.grow.link/MTI4NTk~ebc231302183bc6fb9c76929dc7919dc-Mzk5NTUxMA" target="_blank" rel="noopener noreferrer" class="btn-primary adopt-btn">
             Adopt a Reservist
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" /></svg>
+          </a>
+          <a class="adopt-dl" href="adopt-a-reservist.pdf" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><path d="m7 10 5 5 5-5" /><path d="M12 15V3" /></svg>
+            Download the one-page flyer (PDF)
           </a>
           <p class="adopt-tax">Donations are tax-recognized in Israel — Israeli taxpayers are entitled to a 35% tax credit under Section 46.</p>
         </div>
